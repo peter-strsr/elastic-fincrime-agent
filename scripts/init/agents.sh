@@ -114,16 +114,22 @@ build_agent_payload() {
   local instructions="$4"
   local tool_ids_json="$5"
   local include_id="$6"
+  local avatar_symbol="$7"
+  local avatar_color="$8"
 
   local payload
   payload="$(jq -cn \
     --arg name "${display_name}" \
     --arg description "${display_description}" \
     --arg instructions "${instructions}" \
+    --arg avatar_symbol "${avatar_symbol}" \
+    --arg avatar_color "${avatar_color}" \
     --argjson tool_ids "${tool_ids_json}" \
     '{
       name: $name,
       description: $description,
+      avatar_symbol: $avatar_symbol,
+      avatar_color: $avatar_color,
       configuration: {
         instructions: $instructions,
         tools: [
@@ -164,6 +170,21 @@ tool_ids_for_agent() {
   esac
 }
 
+avatar_for_agent() {
+  local agent_id="$1"
+  case "${agent_id}" in
+    financial-crime-agent)
+      jq -cn '{"symbol":"🕵️","color":"#1F6FEB"}'
+      ;;
+    identity_agent)
+      jq -cn '{"symbol":"🧩","color":"#6F42C1"}'
+      ;;
+    *)
+      jq -cn '{"symbol":"🤖","color":"#0E7A0D"}'
+      ;;
+  esac
+}
+
 upsert_agent_from_file() {
   local prompt_file="$1"
   local agent_id
@@ -175,6 +196,9 @@ upsert_agent_from_file() {
   local endpoint
   local method
   local include_id
+  local avatar
+  local avatar_symbol
+  local avatar_color
 
   agent_id="$(extract_section_value "Agent ID" "${prompt_file}")"
   display_name="$(extract_section_value "Display name" "${prompt_file}")"
@@ -200,7 +224,11 @@ upsert_agent_from_file() {
     include_id="1"
   fi
 
-  payload="$(build_agent_payload "${agent_id}" "${display_name}" "${display_description}" "${instructions}" "${tool_ids}" "${include_id}")"
+  avatar="$(avatar_for_agent "${agent_id}")"
+  avatar_symbol="$(printf '%s' "${avatar}" | jq -r '.symbol')"
+  avatar_color="$(printf '%s' "${avatar}" | jq -r '.color')"
+
+  payload="$(build_agent_payload "${agent_id}" "${display_name}" "${display_description}" "${instructions}" "${tool_ids}" "${include_id}" "${avatar_symbol}" "${avatar_color}")"
   submit_agent_request "${method}" "${endpoint}" "${payload}"
 }
 

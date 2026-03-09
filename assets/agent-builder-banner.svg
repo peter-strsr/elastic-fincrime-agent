@@ -1,0 +1,44 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elastic Financial Crime Agents">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <circle cx="1000" cy="80" r="180" fill="#60a5fa" opacity="0.18"/>
+  <circle cx="120" cy="360" r="140" fill="#22d3ee" opacity="0.14"/>
+
+  <g transform="translate(60, 70)">
+    <text x="0" y="0" fill="#e2e8f0" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">
+      Elastic Agent Builder
+    </text>
+    <text x="0" y="56" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">
+      Financial Crime Investigator Agents
+    </text>
+    <text x="0" y="98" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="24">
+      AML | Sanctions | Entity Resolution
+    </text>
+  </g>
+
+  <g transform="translate(70, 180)">
+    <rect x="0" y="0" width="500" height="180" rx="20" fill="url(#card)" stroke="#93c5fd" stroke-opacity="0.4"/>
+    <text x="28" y="42" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">=u Financial Crime Investigator</text>
+    <text x="28" y="82" fill="#dbeafe" font-family="Arial, Helvetica, sans-serif" font-size="22">Searches clients, transactions, policy, and media</text>
+    <text x="28" y="118" fill="#bfdbfe" font-family="Arial, Helvetica, sans-serif" font-size="20">Risk score + policy-backed recommendation</text>
+    <text x="28" y="152" fill="#bfdbfe" font-family="Arial, Helvetica, sans-serif" font-size="20">Designed for end-to-end investigation flow</text>
+  </g>
+
+  <g transform="translate(630, 180)">
+    <rect x="0" y="0" width="500" height="180" rx="20" fill="url(#card)" stroke="#c4b5fd" stroke-opacity="0.45"/>
+    <text x="28" y="42" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">>é Identity Resolution Specialist</text>
+    <text x="28" y="82" fill="#ede9fe" font-family="Arial, Helvetica, sans-serif" font-size="22">Detects fragmented identities across regions</text>
+    <text x="28" y="118" fill="#ddd6fe" font-family="Arial, Helvetica, sans-serif" font-size="20">Finds risk gapping and arbitrage patterns</text>
+    <text x="28" y="152" fill="#ddd6fe" font-family="Arial, Helvetica, sans-serif" font-size="20">Single Client View with confidence scoring</text>
+  </g>
+</svg>
