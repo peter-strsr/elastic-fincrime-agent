@@ -88,3 +88,58 @@ The demo follows a **"Top-Down" Investigation Workflow**, designed to simulate a
     * **Case C (Entity Resolution):** Uncovering hidden networks and Regulatory Arbitrage (*Volkov Cluster*).
 
 *Refer to the `SCENARIOS.md` file for the exact prompts to copy-paste during the demo.*
+
+## Automated Bootstrap 
+
+This repository now includes a shell-based bootstrap flow that provisions:
+- Elasticsearch indices and mappings
+- Dataset ingest from `data/*.ndjson`
+- Agent Builder tools
+- Agent Builder agents
+
+The bootstrap is idempotent with safe upsert behavior:
+- Indices are created only if missing
+- Data is ingested only when the target index is empty
+- Tools and agents are created or updated
+
+### Prerequisites
+
+- `bash`
+- `curl`
+- `jq`
+
+### 1) Configure environment variables
+
+Copy the template and fill in your values:
+
+```bash
+cp .env.example .env
+```
+
+Set the following in `.env`:
+- `ELASTICSEARCH_URL`: Elasticsearch endpoint
+- `KIBANA_URL`: Kibana endpoint
+- `API_KEY`: shared API key used for both Elasticsearch and Kibana APIs
+- `KIBANA_SPACE_ID` (optional): if unset, scripts use the default space
+
+### 2) Run everything in one command
+
+```bash
+bash scripts/init/all.sh
+```
+
+### 3) Run steps individually (optional)
+
+```bash
+bash scripts/init/data.sh
+bash scripts/init/tools.sh
+bash scripts/init/agents.sh
+```
+
+### Index mappings
+
+Mappings are defined in:
+- `mappings/global-clients.json`
+- `mappings/transactions.json`
+- `mappings/internal-policies.json`
+- `mappings/external-news.json`
