@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "description": "Internal policy and legal framework corpus for adjudication. Use policy_id/domain fields for exact retrieval and semantic fields for behavior-to-policy matching."
+  },
+  "properties": {
+    "policy_id": {
+      "type": "keyword"
+    },
+    "domain": {
+      "type": "keyword"
+    },
+    "type": {
+      "type": "keyword"
+    },
+    "title": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "severity": {
+      "type": "keyword"
+    },
+    "sla_hours": {
+      "type": "integer"
+    },
+    "content": {
+      "type": "semantic_text",
+      "inference_id": ".jina-embeddings-v5-text-small"
+    },
+    "semantic_text": {
+      "type": "semantic_text",
+      "inference_id": ".jina-embeddings-v5-text-small"
+    }
+  }
+}

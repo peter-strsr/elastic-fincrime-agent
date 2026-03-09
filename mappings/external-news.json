@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "description": "External intelligence, adverse media, and OSINT records. Use entities/date/source for exact filtering and semantic fields for contextual risk and exoneration signals."
+  },
+  "properties": {
+    "news_id": {
+      "type": "keyword"
+    },
+    "source": {
+      "type": "keyword"
+    },
+    "date": {
+      "type": "date"
+    },
+    "title": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "content": {
+      "type": "semantic_text",
+      "inference_id": ".jina-embeddings-v5-text-small"
+    },
+    "entities": {
+      "type": "keyword"
+    },
+    "risk_label": {
+      "type": "keyword"
+    },
+    "sentiment": {
+      "type": "keyword"
+    },
+    "semantic_text": {
+      "type": "semantic_text",
+      "inference_id": ".jina-embeddings-v5-text-small"
+    }
+  }
+}

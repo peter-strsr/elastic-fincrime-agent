@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "description": "Transaction events and behavioral narratives for AML, sanctions, and fraud pattern analysis. Use passport_id and tx metadata for exact filters and semantic_text for concept search."
+  },
+  "properties": {
+    "tx_id": {
+      "type": "keyword"
+    },
+    "passport_id": {
+      "type": "keyword"
+    },
+    "client_name": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "amount": {
+      "type": "double"
+    },
+    "currency": {
+      "type": "keyword"
+    },
+    "timestamp": {
+      "type": "date"
+    },
+    "type": {
+      "type": "keyword"
+    },
+    "semantic_text": {
+      "type": "semantic_text",
+      "inference_id": ".jina-embeddings-v5-text-small"
+    }
+  }
+}

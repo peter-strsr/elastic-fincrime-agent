@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "description": "Global client KYC and profile records for entity resolution and risk analysis. Use for identity linking by dob, passport_id, address, and phone, plus semantic review of notes."
+  },
+  "properties": {
+    "region": {
+      "type": "keyword"
+    },
+    "branch": {
+      "type": "keyword"
+    },
+    "first_name": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "last_name": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "dob": {
+      "type": "date"
+    },
+    "nationality": {
+      "type": "keyword"
+    },
+    "passport_id": {
+      "type": "keyword"
+    },
+    "email": {
+      "type": "keyword"
+    },
+    "phone": {
+      "type": "keyword"
+    },
+    "address": {
+      "type": "text"
+    },
+    "risk_score": {
+      "type": "keyword"
+    },
+    "account_balance": {
+      "type": "double"
+    },
+    "notes": {
+      "type": "semantic_text",
+      "inference_id": ".jina-embeddings-v5-text-small"
+    }
+  }
+}
